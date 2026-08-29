@@ -1,10 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-
-type LinkItem = {
-  label: string;
-  href: string;
-};
+import LinkCards from "./components/LinkCards";
 
 type ShootingStarVars = CSSProperties & {
   "--star-left"?: string;
@@ -37,12 +33,6 @@ const PROFILE = {
   avatarUrl: "/profile.png",
 };
 
-const LINKS: LinkItem[] = [
-  { label: "🪶 GitHub", href: "https://github.com/rfyoon" },
-  { label: "🏠 블로그", href: "https://blog.naver.com/rfyoon719" },
-  { label: "📤 이메일", href: "mailto:rfyoon719@naver.com" },
-];
-
 export default function Home() {
   return (
     <div className="relative flex flex-1 items-center justify-center overflow-hidden bg-gradient-to-b from-[#FFF8F0] via-[#FFEFDD] to-[#FFE3CC] dark:from-[#221c19] dark:via-[#241d19] dark:to-[#2a2019]">
@@ -73,19 +63,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col gap-4">
-          {LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-14 w-full items-center justify-center rounded-2xl border border-white/60 bg-white/40 text-base font-medium text-stone-800 shadow-[0_4px_20px_-4px_rgba(120,70,30,0.12)] backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-white/55 dark:border-white/10 dark:bg-white/5 dark:text-stone-100 dark:hover:bg-white/10"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+        <LinkCards />
       </main>
     </div>
   );
