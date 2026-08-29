@@ -38,9 +38,9 @@ const PROFILE = {
 };
 
 const LINKS: LinkItem[] = [
-  { label: "🪶 GitHub", href: "https://github.com/" },
-  { label: "🏠 블로그", href: "https://linkedin.com/" },
-  { label: "📤 이메일", href: "https://example.com/" },
+  { label: "🪶 GitHub", href: "https://github.com/rfyoon" },
+  { label: "🏠 블로그", href: "https://blog.naver.com/rfyoon719" },
+  { label: "📤 이메일", href: "mailto:rfyoon719@naver.com" },
 ];
 
 export default function Home() {
