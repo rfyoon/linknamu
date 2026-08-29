@@ -1,9 +1,35 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 type LinkItem = {
   label: string;
   href: string;
 };
+
+type ShootingStarVars = CSSProperties & {
+  "--star-left"?: string;
+  "--star-angle"?: string;
+  "--star-dx"?: string;
+  "--star-dy"?: string;
+  "--star-delay"?: string;
+};
+
+const SHOOTING_STARS: ShootingStarVars[] = [
+  {
+    "--star-left": "10%",
+    "--star-angle": "-45deg",
+    "--star-dx": "380px",
+    "--star-dy": "380px",
+    "--star-delay": "0s",
+  },
+  {
+    "--star-left": "85%",
+    "--star-angle": "45deg",
+    "--star-dx": "-380px",
+    "--star-dy": "380px",
+    "--star-delay": "0.5s",
+  },
+];
 
 const PROFILE = {
   name: "J.YOON",
@@ -19,8 +45,16 @@ const LINKS: LinkItem[] = [
 
 export default function Home() {
   return (
-    <div className="flex flex-1 items-center justify-center bg-gradient-to-b from-[#FFF8F0] via-[#FFEFDD] to-[#FFE3CC] dark:from-[#221c19] dark:via-[#241d19] dark:to-[#2a2019]">
-      <main className="flex w-full max-w-sm flex-col items-center gap-10 px-8 py-20">
+    <div className="relative flex flex-1 items-center justify-center overflow-hidden bg-gradient-to-b from-[#FFF8F0] via-[#FFEFDD] to-[#FFE3CC] dark:from-[#221c19] dark:via-[#241d19] dark:to-[#2a2019]">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="stars-field stars-field--near" />
+        <div className="stars-field stars-field--mid" />
+        <div className="stars-field stars-field--far" />
+        {SHOOTING_STARS.map((vars, i) => (
+          <div key={i} className="shooting-star" style={vars} />
+        ))}
+      </div>
+      <main className="relative z-10 flex w-full max-w-sm flex-col items-center gap-10 px-8 py-20">
         <div className="flex flex-col items-center gap-5 text-center">
           <Image
             src={PROFILE.avatarUrl}
